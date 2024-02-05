@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Stessa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    />
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;700;800&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+        font-size: 16px;
+        font-family: Raleway;
+      }
+
+      :root {
+        --base-gray: #334756;
+        --base-yellow: #f2a111;
+        --base-slate: #06283d;
+        --base-sky: #00afa1;
+      }
+
+      .title {
+        color: var(--base-slate);
+        text-align: center;
+        font-size: 1.5rem;
+      }
+
+      .text {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: var(--base-gray);
+      }
+
+      .text--link {
+        text-decoration: none;
+        color: var(--base-yellow);
+      }
+
+      .text--link:hover {
+        color: var(--base-sky);
+      }
+
+      .wrapper {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: repeat(auto-fit, minmax(30vh, max-content));
+      }
+
+      .header {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--base-gray);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+          rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+      }
+
+      .header__brand {
+        padding-bottom: 2rem;
+      }
+
+      .brand__img {
+        width: 12rem;
+      }
+
+      .main {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+      }
+
+      .forms {
+        width: 100%;
+        min-height: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+
+      .forms__form {
+        position: relative;
+        width: 30rem;
+        min-height: max-content;
+        background-color: #fff;
+        top: -2rem;
+        z-index: 10;
+        padding: 2rem 3rem;
+        border: 0.1rem solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0.5rem;
+      }
+
+      .login__header,
+      .register__header {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .text__information {
+        font-weight: 400;
+      }
+      .recovery__header {
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      .active .forms__form--login {
+        display: none;
+      }
+
+      .forms__form--signup {
+        display: none;
+      }
+
+      .active .forms__form--signup {
+        display: block;
+      }
+
+      .activeRecovery .forms__form--recovery {
+        display: block;
+      }
+
+      .forms__form--recovery {
+        display: none;
+      }
+
+      .activeRecovery .forms__form--login {
+        display: none;
+      }
+
+      .active .forms__form--recovery {
+        display: none;
+      }
+
+      form {
+        margin-top: 1rem;
+      }
+
+      .form__box {
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+      }
+
+      .form__input {
+        width: 100%;
+      }
+
+      .form__input--label {
+        font-weight: bold;
+        font-size: 0.8rem;
+      }
+
+      .form__input-field {
+        width: 100%;
+        display: block;
+        position: relative;
+        height: 2.5rem;
+        margin: 0.5rem 0 1.5rem 0;
+      }
+
+      .form__input-field input {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 0 2rem;
+        outline: none;
+        border: 0.1rem solid rgba(0, 0, 0, 0.1);
+        transition: all 0.2s ease;
+        border-radius: 0.2rem;
+        font-size: 0.8rem;
+        font-family: Raleway;
+      }
+
+      .form__input-field input:is(:focus, :valid) {
+        border-color: var(--base-yellow);
+      }
+
+      .form__input-field i {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(0, 0, 0, 0.2);
+        font-size: 1rem;
+        padding-left: 0.5rem;
+        transition: all 0.2s ease;
+      }
+
+      .form__input-field input:is(:focus, :valid) ~ i {
+        color: var(--base-yellow);
+      }
+
+      .form__input-field i.showHidePw {
+        right: 0;
+        cursor: pointer;
+        padding: 10px;
+      }
+
+      .forgot-password {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-top: 1rem;
+      }
+
+      .form__checkbox {
+        margin: 1rem 0.5rem;
+      }
+
+      .button {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0.5rem 0;
+        border: none;
+        color: #fff;
+        font-family: Raleway;
+        font-weight: bold;
+        border-radius: 0.2rem;
+        background-color: var(--base-yellow);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .button--account {
+        margin-top: 1rem;
+        font-weight: 400;
+      }
+
+      .button--account-transparent {
+        background-color: rgba(0, 0, 0, 0.047);
+        color: var(--base-yellow);
+        margin-bottom: 1rem;
+      }
+
+      .account {
+        margin-top: 1rem;
+      }
+
+      .account__span {
+        display: flex;
+        justify-content: center;
+        color: var(--base-gray);
+        font-weight: bold;
+      }
+
+      .button:hover {
+        background-color: var(--base-gray);
+      }
+
+      .footer {
+        position: relative;
+        min-height: max-content;
+        background-color: var(--base-gray);
+        padding: 1rem 5rem;
+      }
+
+      .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: Raleway;
+        min-height: 100%;
+      }
+
+      .menu__item--imagen {
+        width: 1rem;
+        border-radius: 50%;
+      }
+
+      .menu__item {
+        list-style: none;
+        color: #fff;
+      }
+
+      .menu__link {
+        text-decoration: none;
+        color: #fff;
+      }
+
+      .menu__link:hover {
+        color: var(--base-yellow);
+      }
+
+      @media screen and (min-width: 320px) and (max-width: 768px) {
+        html {
+          font-size: 12px;
+        }
+
+        .brand__img {
+          width: 16rem;
+        }
+
+        .footer {
+          padding: 1rem 0;
+        }
+
+        .menu {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      @media screen and (min-width: 769px) and (max-width: 1024px) {
+        html {
+          font-size: 15px;
+        }
+
+        .brand__img {
+          width: 16rem;
+        }
+
+        .footer {
+          padding: 1rem 0;
+        }
+
+        .menu {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <!-- ===== RowGrid 1 ===== -->
+      <section class="header">
+        <div class="header__brand">
+          <img
+            class="brand__img"
+            src="logo-login-base-legal.png"
+            alt=""
+            srcset=""
+          />
+        </div>
+      </section>
+      <!-- ===== RowGrid 2 ===== -->
+
+      <section class="main">
+        <div class="forms">
+          <!-- ===== Sesion Form ===== -->
+          <div class="forms__form forms__form--login">
+            <h1 class="title">Iniciar sesión</h1>
+            <div class="login__header">
+              <p class="text">¿Eres nuevo?</p>
+              <a href="#" class="text text--link signup-link"
+                >Crea una cuenta</a
+              >
+            </div>
+
+            <form>
+              <div class="form__input">
+                <label class="form__input--label" for=""
+                  >Correo electrónico</label
+                >
+                <div class="form__input-field">
+                  <input
+                    type="email"
+                    name="email"
+                    autocomplete="username"
+                    id="loginemail"
+                    placeholder="ejemplo@baselegal.com"
+                    required
+                  />
+                  <i class="far fa-envelope"></i>
+                </div>
+              </div>
+              <div class="form__input">
+                <label class="form__input--label" for="">Contraseña</label>
+                <div class="form__input-field">
+                  <input
+                    type="password"
+                    class="password"
+                    required
+                    name="password"
+                    autocomplete="current-password"
+                    placeholder="********"
+                    minlength="8"
+                    id="loginpassword"
+                    required
+                  />
+                  <i class="fas fa-lock"></i>
+                  <i class="far fa-eye-slash showHidePw"></i>
+                </div>
+              </div>
+              <div class="forgot-password">
+                <a href="#" class="text text--link recovery-link"
+                  >Olvidé mi contraseña
+                </a>
+              </div>
+
+              <div>
+                <button id="btn-login" class="button" type="button">
+                  Continuar
+                </button>
+              </div>
+              <div class="account">
+                <span class="account__span">o</span>
+                <div>
+                  <button
+                    id="loginGoogle"
+                    class="button button--account"
+                    type="button"
+                  >
+                    <i class="fab fa-google"></i> Continúa con Google
+                  </button>
+                </div>
+                <!-- <div>
+                  <button class="button button--account" type="button">
+                    <i class="far fa-envelope"></i> Continúa con Email
+                  </button>
+                </div> -->
+                <div>
+                  <button
+                    id="loginApple"
+                    class="button button--account"
+                    type="button"
+                  >
+                    <i class="fab fa-apple"></i> Continúa con Apple
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- ==== Recovey Form ===== -->
+          <div class="forms__form forms__form--recovery">
+            <h1 class="title">Recuperacíon de contraseña</h1>
+            <div class="recovery__header">
+              <p class="text text__information">
+                Introduce una direccion de correo electrónico para que podamos
+                ponernos en contacto contigo mas adelante.
+              </p>
+            </div>
+            <form>
+              <div class="form__input">
+                <label class="form__input--label" for=""
+                  >Correo electrónico</label
+                >
+                <div class="form__input-field">
+                  <input
+                    id="forgotemail"
+                    type="text"
+                    placeholder="ejemplo@baselegal.com"
+                    required
+                  />
+                  <i class="far fa-envelope"></i>
+                </div>
+              </div>
+              <div>
+                <button id="btn-forgot" class="button" type="button">
+                  Continuar
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- ===== Registration Form ===== -->
+          <div class="forms__form forms__form--signup">
+            <h1 class="title">Crea tu cuenta</h1>
+            <div class="register__header">
+              <p class="text">¿Ya tienes una cuenta?</p>
+              <a href="#" class="text text--link login-link">Inicia sesión</a>
+            </div>
+
+            <form>
+              <div class="account">
+                <div>
+                  <button
+                    id="registerGoogle"
+                    class="button button--account button--account-transparent"
+                    type="button"
+                  >
+                    <i class="fab fa-google"></i> Continúa con Google
+                  </button>
+                </div>
+                <span class="account__span">o</span>
+              </div>
+              <div class="form__box">
+                <div class="form__input">
+                  <label class="form__input--label" for="">Nombre</label>
+                  <div class="form__input-field">
+                    <input type="text" placeholder="" required />
+                    <i class="far fa-user"></i>
+                  </div>
+                </div>
+                <div class="form__input">
+                  <label class="form__input--label" for="">Apellido</label>
+                  <div class="form__input-field">
+                    <input type="text" placeholder="" required />
+                    <i class="far fa-user"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="form__input">
+                <label class="form__input--label" for="">
+                  Correo electrónico</label
+                >
+                <div class="form__input-field">
+                  <input
+                    id="regemail"
+                    type="text"
+                    placeholder="ejemplo@baselegal.com"
+                    required
+                  />
+                  <i class="far fa-envelope"></i>
+                </div>
+              </div>
+              <div class="form__input">
+                <label class="form__input--label" for="">Contraseña</label>
+                <div class="form__input-field">
+                  <input
+                    type="password"
+                    class="password"
+                    placeholder="Ingresa tu contraseña"
+                    required
+                  />
+                  <i class="fas fa-lock"></i>
+                  <i class="far fa-eye-slash showHidePw"></i>
+                </div>
+              </div>
+              <div class="form__input">
+                <label class="form__input--label" for=""
+                  >Confirmar contraseña</label
+                >
+                <div class="form__input-field">
+                  <input
+                    id="regpassword"
+                    type="password"
+                    class="password"
+                    placeholder="Confirma tu contraseña"
+                    required
+                  />
+                  <i class="fas fa-lock"></i>
+                  <i class="far fa-eye-slash showHidePw"></i>
+                </div>
+              </div>
+              <div class="form__checkbox">
+                <div class="checkbox__content">
+                  <div>
+                    <input type="checkbox" id="termCon" />
+                    <label for="termCon" class="text"
+                      >Acepto
+                      <span class="text--link"
+                        >Términos y condiciones</span
+                      ></label
+                    >
+                  </div>
+                  <div>
+                    <input type="checkbox" id="termCon" />
+                    <label for="termCon" class="text"
+                      >Acepto
+                      <span class="text--link"
+                        >Política de tratamiento de datos personales</span
+                      ></label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <button id="btn-signup" class="button" type="button">
+                  Enviar
+                </button>
+              </div>
+            </form>
+            <div class="captcha-container form-group"></div>
+          </div>
+        </div>
+      </section>
+      <!-- ===== RowGrid 3 ===== -->
+      <div class="alert alert-danger error-message form-group"></div>
+      <section class="footer">
+        <ul class="menu">
+          <li class="menu__item">
+            <span
+              ><img
+                class="menu__item--imagen"
+                src="colombia.svg"
+                alt="IconColmbia"
+                srcset=""
+            /></span>
+            Hecho en Colombia
+          </li>
+          <li class="menu__item">
+            <a class="menu__link" href=""
+              >Política de tratamiento de datos personales</a
+            >
+          </li>
+          <li class="menu__item">
+            <a class="menu__link" href="">Términos y condiciones</a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link" href=""
+              >PQR Superintendencia de Industria y Comercio</a
+            >
+          </li>
+        </ul>
+      </section>
+    </div>
+    <!--[if IE 8]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/ie8/0.2.5/ie8.js"></script>
+    <![endif]-->
+
+    <!--[if lte IE 9]>
+      <script src="https://cdn.auth0.com/js/polyfills/1.0/base64.min.js"></script>
+      <script src="https://cdn.auth0.com/js/polyfills/1.0/es5-shim.min.js"></script>
+    <![endif]-->
+    <script>
+      /* eslint-disable no-param-reassign */
+      const main = document.querySelector('.main');
+      const pwShowHide = document.querySelectorAll('.showHidePw');
+      const pwFields = document.querySelectorAll('.password');
+      const signUp = document.querySelector('.signup-link');
+      const login = document.querySelector('.login-link');
+      const recovery = document.querySelector('.recovery-link');
+      //   js code to show/hide password and change icon
+      pwShowHide.forEach(eyeIcon => {
+        eyeIcon.addEventListener('click', () => {
+          pwFields.forEach(pwField => {
+            if (pwField.type === 'password') {
+              pwField.type = 'text';
+
+              pwShowHide.forEach(icon => {
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+              });
+            } else {
+              pwField.type = 'password';
+
+              pwShowHide.forEach(icon => {
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+              });
+            }
+          });
+        });
+      });
+
+      signUp.addEventListener('click', () => {
+        main.classList.add('active');
+      });
+      login.addEventListener('click', () => {
+        main.classList.remove('active');
+      });
+      recovery.addEventListener('click', () => {
+        main.classList.add('activeRecovery');
+      });
+    </script>
+    <script src="https://cdn.auth0.com/js/auth0/9.16/auth0.min.js"></script>
+    <script src="https://cdn.auth0.com/js/polyfills/1.0/object-assign.min.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+        var config = JSON.parse(
+          decodeURIComponent(escape(window.atob('@@config@@')))
+        );
+        /* document
+          .getElementById('forgotswitcher')
+          .addEventListener('click', function(e) {
+            e.preventDefault();
+            clearErrors();
+            document.getElementById('registerform').className = 'd-none';
+            document.getElementById('loginform').className = 'd-none';
+            // document.getElementById('forgotpassword').className = '';
+            //document.getElementById('extrainfo').className = 'd-none';
+          });
+          */
+
+        if (config && 'internalOptions' in config) {
+          var leeway = config.internalOptions.leeway;
+          if (leeway) {
+            var convertedLeeway = parseInt(leeway);
+
+            if (!isNaN(convertedLeeway)) {
+              config.internalOptions.leeway = convertedLeeway;
+            }
+          }
+        }
+
+        var params = Object.assign(
+          {
+            overrides: {
+              __tenant: config.auth0Tenant,
+              __token_issuer: config.authorizationServer.issuer,
+            },
+            domain: config.auth0Domain,
+            clientID: config.clientID,
+            redirectUri: config.callbackURL,
+            responseType: 'code',
+          },
+          config.internalOptions
+        );
+
+        var webAuth = new auth0.WebAuth(params);
+        var databaseConnection = 'Username-Password-Authentication';
+        var captcha = webAuth.renderCaptcha(
+          document.querySelector('.captcha-container')
+        );
+
+        function login(e) {
+          e.preventDefault();
+          clearErrors();
+          var button = this;
+          var username = document.getElementById('loginemail').value;
+          var password = document.getElementById('loginpassword').value;
+          button.disabled = true;
+          webAuth.login(
+            {
+              realm: databaseConnection,
+              username: username,
+              password: password,
+              captcha: captcha.getValue(),
+            },
+            function(err) {
+              if (err) displayError(err);
+              button.disabled = false;
+            }
+          );
+        }
+
+        function forgotpassword(e) {
+          e.preventDefault();
+          clearErrors();
+          var button = this;
+          const login = document.querySelector('.login-link');
+          var email = document.getElementById('forgotemail').value;
+          button.disabled = true;
+          webAuth.changePassword(
+            {
+              connection: databaseConnection,
+              email: email,
+              captcha: captcha.getValue(),
+            },
+            function(err, resp) {
+              if (err) {
+                if (err) displayError(err);
+              } else {
+                login.addEventListener('click', () => {
+                  main.classList.remove('active');
+                });
+              }
+            }
+          );
+        }
+
+        function signup(e) {
+          e.preventDefault();
+          clearErrors();
+          var button = this;
+          var email = document.getElementById('regemail').value;
+          var password = document.getElementById('regpassword').value;
+
+          button.disabled = true;
+          webAuth.redirect.signupAndLogin(
+            {
+              connection: databaseConnection,
+              email: email,
+              password: password,
+              captcha: captcha.getValue(),
+            },
+            function(err) {
+              if (err) {
+                displayError(err);
+              } else {
+                console.error('unknown error', err);
+              }
+              button.disabled = false;
+            }
+          );
+        }
+
+        function loginWithGoogle() {
+          webAuth.authorize(
+            {
+              connection: 'google-oauth2',
+            },
+            function(err) {
+              if (err) displayError(err);
+            }
+          );
+        }
+
+        function loginWithApple() {
+          webAuth.authorize(
+            {
+              connection: 'apple',
+            },
+            function(err) {
+              if (err) displayError(err);
+            }
+          );
+        }
+
+        function clearErrors() {
+          var errorMessage = document.getElementsByClassName('error-message');
+          for (var i = 0; i < errorMessage.length; i++) {
+            errorMessage[i].innerHTML = '';
+            errorMessage[i].style.display = 'none';
+          }
+        }
+
+        function displayError(err) {
+          captcha.reload();
+          var errorMessage = document.getElementsByClassName('error-message');
+          for (var i = 0; i < errorMessage.length; i++) {
+            errorMessage[i].innerHTML = err.policy || err.description;
+            errorMessage[i].style.display = 'block';
+          }
+        }
+
+        document.getElementById('btn-login').addEventListener('click', login);
+        document.getElementById('btn-signup').addEventListener('click', signup);
+        document
+          .getElementById('btn-forgot')
+          .addEventListener('click', forgotpassword);
+        const password = document.querySelector('#loginpassword');
+        const regPassword = document.querySelector('#regpassword');
+        const createPassword = document.querySelector('#password');
+        const loginGoogle = document.querySelector('#loginGoogle');
+        const registerGoogle = document.querySelector('#registerGoogle');
+        const loginApple = document.querySelector('#loginApple');
+
+        loginApple.addEventListener('click', function(e) {
+          loginWithApple();
+        });
+
+        loginGoogle.addEventListener('click', function(e) {
+          loginWithGoogle();
+        });
+        registerGoogle.addEventListener('click', function(e) {
+          loginWithGoogle();
+        });
+      });
+    </script>
+  </body>
+</html>
