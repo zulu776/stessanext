@@ -7,8 +7,15 @@ import Cart from './../components/Buttons/Cart/Cart';
 import RotatingText from './../components/RotatingText/RotatingText';
 import House from './../components/Buttons/House/House';
 import Category from './../components/Buttons/Category/Category';
+import SearchBar from '@components/search/SearchBar';
+import { useState } from 'react';
 
 export default function Home() {
+  const [searchState, setSearchState] = useState();
+  const handleSearch = (searchState) => {
+    console.log(searchState);
+  };
+
   return (
     <div className='h-100vh'>
       {/* Barra de información superior */}
@@ -17,15 +24,21 @@ export default function Home() {
       </div>
       {/* Barra utilities search & etc */}
       <div className='grid grid-cols-6'>
-        {/* <div className='flex justify-self-stretch items-center border'> */}
-        <div className='mobile-button'>
+        <div className='mobile-button md:hidden'>
           <SidebarM />
         </div>
-        <div className='mobile-button'>
+        <div className='mobile-button md:hidden'>
           <Search />
         </div>
         <div className='mobile-button col-span-2'>
           <StessaLogo />
+        </div>
+        <div className='hidden md:block col-span-2'>
+          <SearchBar
+            searchState={searchState}
+            setSearchState={setSearchState}
+            onSearch={handleSearch}
+          />
         </div>
         <div className='mobile-button'>
           <Profile />
@@ -36,12 +49,7 @@ export default function Home() {
       </div>
       {/* Barra Banner principal */}
       <div className='bg-SecondBlue flex flex-col items-center fade-animation'>
-        <Image
-          src='/IMG/Banner/remove_1.png'
-          alt='NOT FOUND'
-          width={400}
-          height={400}
-        />
+        <Image src='/IMG/Banner/remove_1.png' alt='NOT FOUND' width={400} height={400} />
         <p className='banner font-bold'>UN NUEVO AÑO</p>
         <p className='banner'>UN NUEVO COMIENZO</p>
       </div>

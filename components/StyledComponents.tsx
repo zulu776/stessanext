@@ -45,9 +45,7 @@ function Button({
     if (priority === 'primary') {
       return `${size === 'small' ? 'px-3 py-1' : `px-4 py-2`} font-semibold ${
         disabled
-          ? ` ${
-              negative ? 'bg-inputBorder text-darkBlue500' : 'bg-inputBorder'
-            } text-white`
+          ? ` ${negative ? 'bg-inputBorder text-darkBlue500' : 'bg-inputBorder'} text-white`
           : `${
               negative
                 ? 'bg-white hover:bg-greyCustom'
@@ -58,9 +56,7 @@ function Button({
     if (priority === 'secundary') {
       return `${size === 'small' ? 'px-3 py-1' : `px-6 py-2`} font-base ${
         disabled
-          ? ` ${
-              negative ? 'bg-inputBorder text-darkBlue500' : 'bg-inputBorder'
-            } text-white`
+          ? ` ${negative ? 'bg-inputBorder text-darkBlue500' : 'bg-inputBorder'} text-white`
           : `${
               negative
                 ? 'bg-white hover:bg-greyCustom'
@@ -71,9 +67,7 @@ function Button({
     if (priority === 'delete') {
       return `${size === 'small' ? 'px-3 py-1' : `px-6 py-2`} font-semibold ${
         disabled
-          ? ` ${
-              negative ? 'bg-inputBorder text-darkBlue500' : 'bg-inputBorder'
-            } text-white`
+          ? ` ${negative ? 'bg-inputBorder text-darkBlue500' : 'bg-inputBorder'} text-white`
           : `${
               negative
                 ? 'bg-white hover:bg-greyCustom'
@@ -84,9 +78,7 @@ function Button({
     if (priority === 'load') {
       return `${size === 'small' ? 'px-3 py-1' : `px-6 py-2`} font-semibold ${
         disabled
-          ? ` ${
-              negative ? 'bg-inputBorder text-darkBlue500' : 'bg-inputBorder'
-            } text-white`
+          ? ` ${negative ? 'bg-inputBorder text-darkBlue500' : 'bg-inputBorder'} text-white`
           : `${
               negative
                 ? 'bg-white hover:bg-greyCustom'
@@ -97,9 +89,7 @@ function Button({
     if (priority === 'bluegray') {
       return `${size === 'small' ? 'px-3 py-1' : `px-6 py-2`} font-base ${
         disabled
-          ? ` ${
-              negative ? 'bg-inputBorder text-darkBlue500' : 'bg-inputBorder'
-            } text-white`
+          ? ` ${negative ? 'bg-inputBorder text-darkBlue500' : 'bg-inputBorder'} text-white`
           : `${
               negative
                 ? 'bg-white hover:bg-greyCustom'
@@ -110,9 +100,7 @@ function Button({
     if (priority === 'brochure') {
       return `${size === 'small' ? 'px-3 py-1' : `px-6 py-2`} font-medium ${
         disabled
-          ? ` ${
-              negative ? 'bg-inputBorder text-darkBlue500' : 'bg-greyCustom'
-            } text-gray-600`
+          ? ` ${negative ? 'bg-inputBorder text-darkBlue500' : 'bg-greyCustom'} text-gray-600`
           : `${
               negative
                 ? 'bg-white hover:bg-greyCustom'
@@ -121,9 +109,7 @@ function Button({
       }`;
     }
     if (priority === 'ghost') {
-      return `${
-        size === 'small' ? 'px-3 py-1' : `px-6 py-2`
-      } font-bold bg-white border-2 ${
+      return `${size === 'small' ? 'px-3 py-1' : `px-6 py-2`} font-bold bg-white border-2 ${
         disabled
           ? 'border-inputBorder text-inputBorder'
           : `${
@@ -146,9 +132,7 @@ function Button({
     }
     if (priority === 'icon') {
       return `${
-        size === 'small'
-          ? 'w-8 h-8'
-          : `${size === 'large' ? 'w-12 h-12' : 'w-10 h-10'}`
+        size === 'small' ? 'w-8 h-8' : `${size === 'large' ? 'w-12 h-12' : 'w-10 h-10'}`
       } font-bold ${
         disabled
           ? `bg-inputBorder ${negative ? 'text-darkBlue500' : 'text-white'}  `
@@ -187,14 +171,7 @@ function Button({
       disabled={disabled}
     >
       <div className='flex flex-row justify-center items-center'>
-        {loading && (
-          <ReactLoading
-            type='spin'
-            height={24}
-            width={24}
-            color={changeSpingColor()}
-          />
-        )}
+        {loading && <ReactLoading type='spin' height={24} width={24} color={changeSpingColor()} />}
 
         {children && <span className={`${text && 'px-2'} `}>{children}</span>}
 
@@ -236,9 +213,7 @@ function Input({
   return (
     <label
       htmlFor={name}
-      className={`${
-        children ? 'relative h-full' : 'flex flex-col'
-      } ${extraClassNames}`}
+      className={`${children ? 'relative h-full' : 'flex flex-col'} ${extraClassNames}`}
     >
       <span>
         {label}
@@ -329,9 +304,7 @@ function NumberInput({
   return (
     <label
       htmlFor={name}
-      className={`${
-        children ? 'relative h-full' : 'flex flex-col'
-      } ${extraClassNames}`}
+      className={`${children ? 'relative h-full' : 'flex flex-col'} ${extraClassNames}`}
     >
       <span>
         {label}
@@ -434,85 +407,85 @@ function Textarea({
 }
 
 const stylesSelect = {
-  container: styles => ({
+  container: (styles) => ({
     ...styles,
     marginTop: '10px !important',
     marginLeft: '1px !important',
     marginRight: '1px !important',
     marginButton: '1px !important',
   }),
-  control: styles => ({
+  control: (styles) => ({
     ...styles,
     borderRadius: '5px',
     borderColor: 'rgba(51, 71, 86, 0.197)',
     backgroundColor: 'rgba(51, 71, 86, 0.093)',
   }),
-  dropdownIndicator: styles => ({
+  dropdownIndicator: (styles) => ({
     ...styles,
     color: '#334756',
   }),
-  singleValue: styles => ({
+  singleValue: (styles) => ({
     ...styles,
     color: '#334756',
     fontWeight: 'bold',
     fontStyle: 'italic',
   }),
 
-  menuList: styles => ({
+  menuList: (styles) => ({
     ...styles,
     color: '#334756',
     fontWeight: 'lighter',
     fontStyle: 'italic',
   }),
-  placeholder: styles => ({
+  placeholder: (styles) => ({
     ...styles,
     color: '#334756',
     fontWeight: 'lighter',
   }),
-  multiValueLabel: styles => ({
+  multiValueLabel: (styles) => ({
     ...styles,
     color: '#0A283D',
   }),
 
-  indicatorSeparator: styles => ({ ...styles, display: 'none' }),
-  menuPortal: base => ({ ...base, zIndex: 9999 }),
+  indicatorSeparator: (styles) => ({ ...styles, display: 'none' }),
+  menuPortal: (base) => ({ ...base, zIndex: 9999 }),
 };
 
 const stylesSelectPagination = {
-  container: styles => ({}),
-  control: styles => ({
+  container: (styles) => ({}),
+  control: (styles) => ({
     ...styles,
 
     backgroundColor: '#fffff',
     borderWidth: 0,
   }),
-  dropdownIndicator: styles => ({
+  dropdownIndicator: (styles) => ({
     ...styles,
     color: '#757575',
   }),
-  singleValue: styles => ({
+  singleValue: (styles) => ({
     ...styles,
     color: '#757575',
   }),
 
-  menuList: styles => ({
+  menuList: (styles) => ({
     ...styles,
     color: '#cbcbcb',
   }),
-  placeholder: styles => ({
+  placeholder: (styles) => ({
     ...styles,
     color: '#cbcbcb',
   }),
-  multiValueLabel: styles => ({
+  multiValueLabel: (styles) => ({
     ...styles,
     color: '#0A283D',
   }),
 
-  indicatorSeparator: styles => ({ ...styles, display: 'none' }),
-  menuPortal: base => ({ ...base, zIndex: 9999 }),
+  indicatorSeparator: (styles) => ({ ...styles, display: 'none' }),
+  menuPortal: (base) => ({ ...base, zIndex: 9999 }),
 };
 
-const themeSelect = theme => ({
+const themeSelect = (theme) => ({
   ...theme,
   colors: {
     ...theme.colors,
@@ -531,9 +504,7 @@ type SelectType = {
   required?: boolean;
   isClearable?: boolean;
   isDisabled?: boolean;
-  selectedValue?:
-    | { label: string; value: any }[]
-    | { label: string; value: any };
+  selectedValue?: { label: string; value: any }[] | { label: string; value: any };
   shownValue?: any;
   defaultValue?: string;
 };
@@ -715,9 +686,7 @@ function SelectSimulation({
   type,
 }: SelectFormType) {
   return (
-    <div
-      className={`ml-0.5 w-full max-w-[300px] rounded-sm ${className} z-999999`}
-    >
+    <div className={`ml-0.5 w-full max-w-[300px] rounded-sm ${className} z-999999`}>
       <input className='hidden' type={type} />
       <Select
         menuPortalTarget={document.body}
@@ -767,9 +736,7 @@ function SelectSimulationPagination({
   type,
 }: SelectFormTypePagination) {
   return (
-    <div
-      className={`ml-0.5 w-full max-w-[300px] rounded-sm ${className} z-999999`}
-    >
+    <div className={`ml-0.5 w-full max-w-[300px] rounded-sm ${className} z-999999`}>
       <input className='hidden' type={type} />
       <Select
         menuPortalTarget={document.body}
@@ -809,7 +776,7 @@ function AsyncSelectInput({
   value,
   required = false,
   text,
-  onInputChange = e => {},
+  onInputChange = (e) => {},
   isDisabled = false,
 }: SelectAsyncType) {
   return (
@@ -826,9 +793,9 @@ function AsyncSelectInput({
         placeholder={placeholder}
         value={value}
         isDisabled={isDisabled}
-        getOptionLabel={e => e.name}
-        getOptionValue={e => e.id}
-        onInputChange={e => onInputChange(e)}
+        getOptionLabel={(e) => e.name}
+        getOptionValue={(e) => e.id}
+        onInputChange={(e) => onInputChange(e)}
         onChange={
           isMulti
             ? (selected: any): void => {
@@ -852,7 +819,7 @@ function AsyncSelectInputWithKeyPress({
   value,
   required = false,
   text,
-  onInputChange = e => {},
+  onInputChange = (e) => {},
   isDisabled = false,
 }: SelectAsyncType) {
   return (
@@ -869,9 +836,9 @@ function AsyncSelectInputWithKeyPress({
         placeholder={placeholder}
         value={value}
         isDisabled={isDisabled}
-        getOptionLabel={e => e.name}
-        getOptionValue={e => e.id}
-        onInputChange={e => onInputChange(e)}
+        getOptionLabel={(e) => e.name}
+        getOptionValue={(e) => e.id}
+        onInputChange={(e) => onInputChange(e)}
         onChange={
           isMulti
             ? (selected: any): void => {
@@ -895,7 +862,7 @@ function AsyncSelectInputCustom({
   value,
   required = false,
   text,
-  onInputChange = e => {},
+  onInputChange = (e) => {},
   isDisabled = false,
   customFunction, // se usa para ejecutar una función en secuencia cuando se cambie un valor del input en onChange
   param,
@@ -914,9 +881,9 @@ function AsyncSelectInputCustom({
         placeholder={placeholder}
         value={value}
         isDisabled={isDisabled}
-        getOptionLabel={e => e.name}
-        getOptionValue={e => e.id}
-        onInputChange={e => onInputChange(e)}
+        getOptionLabel={(e) => e.name}
+        getOptionValue={(e) => e.id}
+        onInputChange={(e) => onInputChange(e)}
         onChange={
           isMulti
             ? (selected: any): void => {
@@ -954,10 +921,7 @@ function CheckboxInputUncontrolled({
   required = false,
 }: CheckBoxTypeUncontrolled) {
   return (
-    <label
-      htmlFor={name}
-      className={`inline-flex items-center ${extraClassNames}`}
-    >
+    <label htmlFor={name} className={`inline-flex items-center ${extraClassNames}`}>
       <input
         type='checkbox'
         className={`${
@@ -972,11 +936,7 @@ function CheckboxInputUncontrolled({
         required={required}
       />
 
-      <span
-        className={`${
-          disabled ? 'opacity-50' : ''
-        } ml-2 text-lg text-darkBlue500`}
-      >
+      <span className={`${disabled ? 'opacity-50' : ''} ml-2 text-lg text-darkBlue500`}>
         {label}
         {required && <span className='text-red-900'> * </span>}
       </span>
@@ -999,10 +959,7 @@ function CheckboxInput({
   disabled = false,
 }: CheckBoxType) {
   return (
-    <label
-      htmlFor={name}
-      className={`inline-flex items-center ${extraClassNames}`}
-    >
+    <label htmlFor={name} className={`inline-flex items-center ${extraClassNames}`}>
       {!defaultChecked ? (
         <input
           type='checkbox'
@@ -1023,9 +980,7 @@ function CheckboxInput({
           disabled={disabled}
         />
       )}
-      <span className={`${disabled ? 'opacity-50' : ''} ml-2 text-lg`}>
-        {label}
-      </span>
+      <span className={`${disabled ? 'opacity-50' : ''} ml-2 text-lg`}>{label}</span>
     </label>
   );
 }
@@ -1038,7 +993,7 @@ type RadioType = {
 function RadioInput({ opts, name }: RadioType) {
   return (
     <div className='flex flex-col gap-1'>
-      {opts.map(option => (
+      {opts.map((option) => (
         <label htmlFor={name} className='inline-flex items-center'>
           <input
             type='radio'
@@ -1066,9 +1021,7 @@ function ThTable({ children, extraClassName = '' }) {
 
 function TdTable({ children, extraClassName = '' }) {
   return (
-    <td
-      className={`px-2 py-5 capitalize border-gray-200 text-sm threeDots ${extraClassName}`}
-    >
+    <td className={`px-2 py-5 capitalize border-gray-200 text-sm threeDots ${extraClassName}`}>
       {children}
     </td>
   );
@@ -1077,7 +1030,7 @@ function TdTable({ children, extraClassName = '' }) {
 function TitlesTable({ titles }) {
   return (
     <tr className='sticky top-0'>
-      {titles.map(title => (
+      {titles.map((title) => (
         <ThTable key={nanoid()} extraClassName='max-w-min'>
           {title}
         </ThTable>
