@@ -6,11 +6,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
 }
 
@@ -29,6 +25,17 @@ body {
 
   .bottom-bar {
     @apply flex flex-col justify-center items-center h-full text-sm;
+  }
+
+  .sidebar-content {
+    @apply bg-white p-[20px] ml-[20px] shadow-indigo-500/40;
+  }
+
+  .sidebar.open {
+    @apply visible opacity-100 transition-opacity;
+  }
+  .sidebar {
+    @apply w-full  fixed top-0 bottom-0 left-0 right-0 z-50 flex justify-end content-center invisible opacity-0 transition-opacity;
   }
 }
 

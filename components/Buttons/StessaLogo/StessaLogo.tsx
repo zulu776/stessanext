@@ -1,14 +1,12 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 function StessaLogo() {
   return (
-    <div>
-      <Image
-        src='/IMG/Buttons/StessaLogo.PNG'
-        alt='NOT FOUND'
-        width={120}
-        height={40}
-      />
+    <div className='flex justify-center w-full'>
+      <Link href={'/'}>
+        <Image src='/IMG/Buttons/StessaLogo.PNG' alt='NOT FOUND' width={180} height={30} />
+      </Link>
     </div>
   );
 }

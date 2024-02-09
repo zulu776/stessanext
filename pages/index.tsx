@@ -9,11 +9,17 @@ import House from './../components/Buttons/House/House';
 import Category from './../components/Buttons/Category/Category';
 import SearchBar from '@components/search/SearchBar';
 import { useState } from 'react';
+import SidebarPrimary from '@components/Buttons/SidebarPrimary/SidebarPrimary';
 
 export default function Home() {
   const [searchState, setSearchState] = useState();
   const handleSearch = (searchState) => {
     console.log(searchState);
+  };
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
   };
 
   return (
@@ -41,7 +47,7 @@ export default function Home() {
           />
         </div>
         <div className='mobile-button'>
-          <Profile />
+          <Profile toggleSidebar={toggleSidebar} />
         </div>
         <div className='mobile-button'>
           <Cart />
@@ -73,7 +79,10 @@ export default function Home() {
           />
         </div>
       </div>
-
+      {/* Sidebar  */}
+      <div>
+        <SidebarPrimary isOpen={isSidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
+      </div>
       {/* Barra inferior fija */}
       <div className='fixed  w-full h-[10%] bg-white bottom-0 grid grid-cols-5 md:hidden'>
         <div className='bottom-bar '>
