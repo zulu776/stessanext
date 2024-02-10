@@ -98,7 +98,7 @@ export default function Home() {
           Catálogo
         </div>
         <div className='bottom-bar'>
-          <Profile />
+          <Profile toggleSidebar={toggleSidebar} />
           Cuenta
         </div>
         <div className='bottom-bar'>
