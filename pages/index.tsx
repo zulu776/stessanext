@@ -10,10 +10,11 @@ import Category from './../components/Buttons/Category/Category';
 import SearchBar from '@components/search/SearchBar';
 import { useState } from 'react';
 import SidebarPrimary from '@components/Buttons/SidebarPrimary/SidebarPrimary';
+import UnderSidebar from '@components/Buttons/UnderSidebar/UnderSidebar';
 
 export default function Home() {
   const [searchState, setSearchState] = useState();
-  const handleSearch = (searchState) => {
+  const handleSearch = searchState => {
     console.log(searchState);
   };
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -29,33 +30,43 @@ export default function Home() {
         <RotatingText />
       </div>
       {/* Barra utilities search & etc */}
-      <div className='grid grid-cols-6'>
-        <div className='mobile-button md:hidden'>
-          <SidebarM />
+      <div>
+        <div className='grid grid-cols-6'>
+          <div className='mobile-button md:hidden'>
+            <SidebarM />
+          </div>
+          <div className='mobile-button md:hidden'>
+            <Search />
+          </div>
+          <div className='mobile-button col-span-2'>
+            <StessaLogo />
+          </div>
+          <div className='hidden md:block col-span-2'>
+            <SearchBar
+              searchState={searchState}
+              setSearchState={setSearchState}
+              onSearch={handleSearch}
+            />
+          </div>
+          <div className='mobile-button'>
+            <Profile toggleSidebar={toggleSidebar} />
+          </div>
+          <div className='mobile-button'>
+            <Cart />
+          </div>
         </div>
-        <div className='mobile-button md:hidden'>
-          <Search />
-        </div>
-        <div className='mobile-button col-span-2'>
-          <StessaLogo />
-        </div>
-        <div className='hidden md:block col-span-2'>
-          <SearchBar
-            searchState={searchState}
-            setSearchState={setSearchState}
-            onSearch={handleSearch}
-          />
-        </div>
-        <div className='mobile-button'>
-          <Profile toggleSidebar={toggleSidebar} />
-        </div>
-        <div className='mobile-button'>
-          <Cart />
+        <div className='md:flex justify-center hidden'>
+          <UnderSidebar />
         </div>
       </div>
       {/* Barra Banner principal */}
       <div className='bg-SecondBlue flex flex-col items-center fade-animation'>
-        <Image src='/IMG/Banner/remove_1.png' alt='NOT FOUND' width={400} height={400} />
+        <Image
+          src='/IMG/Banner/remove_1.png'
+          alt='NOT FOUND'
+          width={400}
+          height={400}
+        />
         <p className='banner font-bold'>UN NUEVO AÑO</p>
         <p className='banner'>UN NUEVO COMIENZO</p>
       </div>
@@ -81,7 +92,10 @@ export default function Home() {
       </div>
       {/* Sidebar  */}
       <div>
-        <SidebarPrimary isOpen={isSidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
+        <SidebarPrimary
+          isOpen={isSidebarOpen}
+          closeSidebar={() => setSidebarOpen(false)}
+        />
       </div>
       {/* Barra inferior fija */}
       <div className='fixed  w-full h-[10%] bg-white bottom-0 grid grid-cols-5 md:hidden'>
