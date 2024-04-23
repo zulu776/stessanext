@@ -11,6 +11,7 @@ import SearchBar from '@components/search/SearchBar';
 import { useState } from 'react';
 import SidebarPrimary from '@components/Buttons/SidebarPrimary/SidebarPrimary';
 import UnderSidebar from '@components/Buttons/UnderSidebar/UnderSidebar';
+import BottomBar from '@components/BottomBar/BottomBar';
 
 export default function Home() {
   const [searchState, setSearchState] = useState();
@@ -30,7 +31,7 @@ export default function Home() {
         <RotatingText />
       </div>
       {/* Barra utilities search & etc */}
-      <div>
+      <div className='m-10'>
         <div className='grid grid-cols-6'>
           <div className='mobile-button md:hidden'>
             <SidebarM />
@@ -60,13 +61,33 @@ export default function Home() {
         </div>
       </div>
       {/* Barra Banner principal */}
-      <div className='bg-SecondBlue flex flex-col items-center fade-animation'>
-        <Image
-          src='/IMG/Banner/remove_1.png'
-          alt='NOT FOUND'
-          width={400}
-          height={400}
-        />
+      <div className='bg-SecondBlue flex flex-col items-center '>
+        <div className='flex items-center md:flex-row flex-col'>
+          <div className='p-0.5'>
+            <Image
+              src='/IMG/Models/model1.jpg'
+              alt='NOT FOUND'
+              width={450}
+              height={750}
+            />
+          </div>
+          <div className='p-0.5'>
+            <Image
+              src='/IMG/Models/model2.jpg'
+              alt='NOT FOUND'
+              width={450}
+              height={750}
+            />
+          </div>
+          <div className='p-0.5'>
+            <Image
+              src='/IMG/Models/model3.jpg'
+              alt='NOT FOUND'
+              width={450}
+              height={750}
+            />
+          </div>
+        </div>
         <p className='banner font-bold'>UN NUEVO AÑO</p>
         <p className='banner'>UN NUEVO COMIENZO</p>
       </div>
@@ -97,6 +118,11 @@ export default function Home() {
           closeSidebar={() => setSidebarOpen(false)}
         />
       </div>
+
+      <div className='w-full h-full'>
+        <BottomBar />
+      </div>
+
       {/* Barra inferior fija */}
       <div className='fixed  w-full h-[10%] bg-white bottom-0 grid grid-cols-5 md:hidden'>
         <div className='bottom-bar '>

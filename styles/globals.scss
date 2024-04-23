@@ -6,7 +6,11 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
     rgb(var(--background-start-rgb));
 }
 
@@ -20,7 +24,7 @@ body {
   }
 
   .banner {
-    @apply p-2 text-white text-xl;
+    @apply p-2 text-xl;
   }
 
   .bottom-bar {
@@ -101,5 +105,7 @@ body {
 }
 
 .fade-animation {
-  animation: fadeColor 6s infinite;
+  // animation: fadeColor 6s infinite;
+  // -webkit-animation: fadeColor 6s infinite;
+  background-color: #7aeecc;
 }
