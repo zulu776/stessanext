@@ -119,12 +119,12 @@ export default function Home() {
         />
       </div>
 
-      <div className='w-full h-full md:mb-24 '>
+      <div className='w-full h-full md:mb-0 mb-20'>
         <BottomBar />
       </div>
 
       {/* Barra inferior fija */}
-      <div className='fixed  w-full h-[10%] bg-white bottom-0 grid grid-cols-5 md:hidden'>
+      <div className='fixed w-full h-[10%] bg-white bottom-0 grid grid-cols-5 md:hidden'>
         <div className='bottom-bar '>
           <House />
           Stessa
