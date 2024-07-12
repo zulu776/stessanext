@@ -1,11 +1,17 @@
+import React, { useState } from 'react';
+import DropMenu from '../Dropdown/DropMenu';
 function BottomBar(params) {
+  const [list, setList] = useState('');
+
+  const handleChange = event => {
+    setList(event.target.value);
+  };
   return (
-    <div className='w-full h-80 fade-animation flex justify-center'>
-      <div className='w-3/4 flex justify-between p-5'>
-        <div>MENU</div>
-        <div>MÁS INFORMACIÓN</div>
-        <div>CONTÁCTANOS</div>
-        <div>SUSCRIBETE</div>
+    <div className='w-full h-full fade-animation flex justify-center '>
+      <div className='w-full flex justify-between p-5 flex-col'>
+        <div>
+          <DropMenu />
+        </div>
       </div>
     </div>
   );

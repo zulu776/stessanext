@@ -44,6 +44,9 @@ body {
   .sidebar-items {
     @apply p-5 border-b-2;
   }
+  .tittle_bottom {
+    @apply font-bold;
+  }
 }
 
 @keyframes slideIn {
@@ -108,4 +111,8 @@ body {
   // animation: fadeColor 6s infinite;
   // -webkit-animation: fadeColor 6s infinite;
   background-color: #7aeecc;
+}
+
+.space-dropMenu {
+  margin: 10px;
 }

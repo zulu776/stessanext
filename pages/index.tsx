@@ -61,9 +61,9 @@ export default function Home() {
         </div>
       </div>
       {/* Barra Banner principal */}
-      <div className='bg-SecondBlue flex flex-col items-center '>
+      <div className=' bg-SecondBlue flex flex-col items-center'>
         <div className='flex items-center md:flex-row flex-col'>
-          <div className='p-0.5'>
+          <div className='md:p-0.5 p-5 '>
             <Image
               src='/IMG/Models/model1.jpg'
               alt='NOT FOUND'
@@ -71,7 +71,7 @@ export default function Home() {
               height={750}
             />
           </div>
-          <div className='p-0.5'>
+          <div className='md:p-0.5 p-5'>
             <Image
               src='/IMG/Models/model2.jpg'
               alt='NOT FOUND'
@@ -79,7 +79,7 @@ export default function Home() {
               height={750}
             />
           </div>
-          <div className='p-0.5'>
+          <div className='md:p-0.5 p-5'>
             <Image
               src='/IMG/Models/model3.jpg'
               alt='NOT FOUND'
@@ -119,7 +119,7 @@ export default function Home() {
         />
       </div>
 
-      <div className='w-full h-full'>
+      <div className='w-full h-full md:mb-24 '>
         <BottomBar />
       </div>
 
