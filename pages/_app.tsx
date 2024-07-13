@@ -8,6 +8,7 @@ import 'nprogress/nprogress.css';
 import 'styles/globals.scss';
 
 import { NextComponentType, NextPageContext } from 'next';
+import Layout from '@components/Layout';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -39,19 +40,22 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: any) {
         <meta property='twitter:description' content='' />
         <meta property='twitter:image' content='' />
       </Head>
-      <App Component={Component} pageProps={pageProps} />
+      <Layout>
+        {/* <App Component={Component} pageProps={pageProps} /> */}
+        <Component {...pageProps} />
+      </Layout>
     </div>
   );
 }
 
-function App({
-  Component,
-  pageProps,
-}: {
-  Component: NextComponentType<NextPageContext, any, {}>;
-  pageProps: any;
-}) {
-  return <Component {...pageProps} />;
-}
+// function App({
+//   Component,
+//   pageProps,
+// }: {
+//   Component: NextComponentType<NextPageContext, any, {}>;
+//   pageProps: any;
+// }) {
+//   return <Component {...pageProps} />;
+// }
 
 export default MyApp;

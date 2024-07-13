@@ -26,40 +26,6 @@ export default function Home() {
 
   return (
     <div className='h-100vh'>
-      {/* Barra de información superior */}
-      <div className='flex justify-center fade-animation w-100vh h-full'>
-        <RotatingText />
-      </div>
-      {/* Barra utilities search & etc */}
-      <div className='m-10'>
-        <div className='grid grid-cols-6'>
-          <div className='mobile-button md:hidden'>
-            <SidebarM />
-          </div>
-          <div className='mobile-button md:hidden'>
-            <Search />
-          </div>
-          <div className='mobile-button col-span-2'>
-            <StessaLogo />
-          </div>
-          <div className='hidden md:block col-span-2'>
-            <SearchBar
-              searchState={searchState}
-              setSearchState={setSearchState}
-              onSearch={handleSearch}
-            />
-          </div>
-          <div className='mobile-button'>
-            <Profile toggleSidebar={toggleSidebar} />
-          </div>
-          <div className='mobile-button'>
-            <Cart />
-          </div>
-        </div>
-        <div className='md:flex justify-center hidden'>
-          <UnderSidebar />
-        </div>
-      </div>
       {/* Barra Banner principal */}
       <div className=' bg-SecondBlue flex flex-col items-center'>
         <div className='flex items-center md:flex-row flex-col'>
@@ -112,40 +78,6 @@ export default function Home() {
         </div>
       </div>
       {/* Sidebar  */}
-      <div>
-        <SidebarPrimary
-          isOpen={isSidebarOpen}
-          closeSidebar={() => setSidebarOpen(false)}
-        />
-      </div>
-
-      <div className='w-full h-full md:mb-0 mb-20'>
-        <BottomBar />
-      </div>
-
-      {/* Barra inferior fija */}
-      <div className='fixed w-full h-[10%] bg-white bottom-0 grid grid-cols-5 md:hidden'>
-        <div className='bottom-bar '>
-          <House />
-          Stessa
-        </div>
-        <div className='bottom-bar'>
-          <Search />
-          Buscar
-        </div>
-        <div className='bottom-bar'>
-          <Category />
-          Catálogo
-        </div>
-        <div className='bottom-bar'>
-          <Profile toggleSidebar={toggleSidebar} />
-          Cuenta
-        </div>
-        <div className='bottom-bar'>
-          <Cart />
-          Carrito
-        </div>
-      </div>
     </div>
   );
 }
